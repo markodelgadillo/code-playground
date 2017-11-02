@@ -55,8 +55,17 @@ function pick(object, paths) {
   })
 }
 */
-const paths = ['a', 'b']
-const object = { a: 2, b: 'ten', c: 'Hello' }
+// const paths = ['a', 'b']
+// const object = { a: 2, b: 'ten', c: 'Hello' }
+
+// shortened code
+/*
+const pick = (object, paths) =>
+  paths.map(path => path.toLowerCase()).reduce((sum, value) => {
+    object[value] ? (sum[value] = object[value]) : null
+    return sum
+  }, {})
+*/
 
 function pick(object, paths) {
   const obj = {}
