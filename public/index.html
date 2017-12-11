@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <title>CRUD RESTful API</title>
+  </head>
+  <body>
+    <h1>My Books</h1>
+
+    <h2>Add a Book</h2>
+    <form id="new-book">
+      <label>Title
+        <input type="text" name="title" required/>
+      </label>
+      <label>Author
+        <input type="text" name="author" required/>
+      </label>
+      <button type="submit">Add</button>
+    </form>
+    <h2>View Books</h2>
+    <div id="book-list"></div>
+      <button id="books">Show Books</button>
+
+    <script src="main.js"></script>
+  </body>
+</html>
