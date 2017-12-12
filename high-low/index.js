@@ -4,6 +4,5 @@ function minMax(arr) {
   let ordered = arr.sort(function(a, b) {
     return a - b
   })
-  console.log(ordered)
   return [ordered[0], ordered[ordered.length - 1]]
 }
