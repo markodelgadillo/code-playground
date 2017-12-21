@@ -8,5 +8,3 @@ function f(n) {
   }
   return sum
 }
-
-f(17)
