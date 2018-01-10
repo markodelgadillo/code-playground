@@ -8,54 +8,53 @@ const fighters = [
 
 let position = [0, 0]
 
-let moves = ['right']
 describe('select a character', () => {
   it('by starting a move with a right move.', () => {
-    expect(streetFighterSelection(fighters, position, moves)).to.equal([
+    expect(streetFighterSelection(fighters, position, 'right')).to.equal([
       'E.Honda'
     ])
   })
 })
 
-let moves = ['left']
 describe('select a character', () => {
   it('by starting a move with a left move.', () => {
-    expect(streetFighterSelection(fighters, position, moves)).to.equal(['Vega'])
-  })
-})
-
-let moves = ['left', 'right', 'left']
-describe('select a character', () => {
-  it('by repeating the first move after the second.', () => {
-    expect(streetFighterSelection(fighters, position, moves)).to.equal([
-      'Vega',
-      'Ryu',
+    expect(streetFighterSelection(fighters, position, 'left')).to.equal([
       'Vega'
     ])
   })
 })
 
-let moves = ['up', 'left', 'down', 'right']
 describe('select a character', () => {
-  it('by starting with an up move.', () => {
-    expect(streetFighterSelection(fighters, position, moves)).to.equal([
-      'Ryu',
-      'Vega',
-      'M.Bison',
-      'Ken'
-    ])
+  it('by repeating the first move after the second.', () => {
+    expect(
+      streetFighterSelection(fighters, position, ['left', 'right', 'left'])
+    ).to.equal(['Vega', 'Ryu', 'Vega'])
   })
 })
 
-let moves = ['left', 'left', 'down', 'down', 'left']
+describe('select a character', () => {
+  it('by starting with an up move.', () => {
+    expect(
+      streetFighterSelection(fighters, position, [
+        'up',
+        'left',
+        'down',
+        'right'
+      ])
+    ).to.equal(['Ryu', 'Vega', 'M.Bison', 'Ken'])
+  })
+})
+
 describe('select a character', () => {
   it('by including a down move one after the other.', () => {
-    expect(streetFighterSelection(fighters, position, moves)).to.equal([
-      'Vega',
-      'Balrog',
-      'Sagat',
-      'Sagat',
-      'Dhalsim'
-    ])
+    expect(
+      streetFighterSelection(fighters, position, [
+        'left',
+        'left',
+        'down',
+        'down',
+        'left'
+      ])
+    ).to.equal(['Vega', 'Balrog', 'Sagat', 'Sagat', 'Dhalsim'])
   })
 })
