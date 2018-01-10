@@ -4,20 +4,31 @@
 function streetFighterSelection(fighters, position, moves) {
   var fighterHovered = []
   for (i = 0; i < moves.length; i++) {
+    console.log(moves[i])
     if (moves[i] === 'up') {
       fighterHovered.push(fighters[0][position[1]])
+      position[0] = 0
     } else if (moves[i] === 'down') {
       fighterHovered.push(fighters[1][position[1]])
+      position[0] = 1
     } else if (moves[i] === 'left' && position[1] === 0) {
-      fighterHovered.push(fighters[position[0]][position[fighters.length]])
+      console.log(position[1])
+      fighterHovered.push(fighters[position[0]][fighters[0].length - 1])
+      position[1] = fighters[0].length - 1
+      console.log(position[1])
     } else if (moves[i] === 'left') {
-      fighterHovered.push(fighters[position[0][position[1] - 1]])
-    } else if (moves[i] === 'right' && position[1] === fighters.length) {
+      console.log(position[1])
+      fighterHovered.push(fighters[position[0]][position[1] - 1])
+      position[1] = position[1] - 1
+    } else if (moves[i] === 'right' && position[1] === fighters[0].length - 1) {
       fighterHovered.push(fighters[position[0]][0])
+      position[1] = 0
     } else if (moves[i] === 'right') {
       fighterHovered.push(fighters[position[0]][position[1] + 1])
+      position[1] += 1
     }
   }
+  console.log(fighterHovered)
   return fighterHovered
 }
 

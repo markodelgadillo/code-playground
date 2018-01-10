@@ -6,33 +6,35 @@ const fighters = [
   ['Ken', 'Chun Li', 'Zangief', 'Dhalsim', 'Sagat', 'M.Bison']
 ]
 
-let position = [0, 0]
-
 describe('select a character', () => {
+  let position = [0, 0]
   it('by starting a move with a right move.', () => {
-    expect(streetFighterSelection(fighters, position, 'right')).to.equal([
+    expect(streetFighterSelection(fighters, position, ['right'])).to.eql([
       'E.Honda'
     ])
   })
 })
 
 describe('select a character', () => {
+  let position = [0, 0]
   it('by starting a move with a left move.', () => {
-    expect(streetFighterSelection(fighters, position, 'left')).to.equal([
+    expect(streetFighterSelection(fighters, position, ['left'])).to.eql([
       'Vega'
     ])
   })
 })
 
 describe('select a character', () => {
+  let position = [0, 0]
   it('by repeating the first move after the second.', () => {
     expect(
       streetFighterSelection(fighters, position, ['left', 'right', 'left'])
-    ).to.equal(['Vega', 'Ryu', 'Vega'])
+    ).to.eql(['Vega', 'Ryu', 'Vega'])
   })
 })
 
 describe('select a character', () => {
+  let position = [0, 0]
   it('by starting with an up move.', () => {
     expect(
       streetFighterSelection(fighters, position, [
@@ -41,11 +43,11 @@ describe('select a character', () => {
         'down',
         'right'
       ])
-    ).to.equal(['Ryu', 'Vega', 'M.Bison', 'Ken'])
+    ).to.eql(['Ryu', 'Vega', 'M.Bison', 'Ken'])
   })
 })
-
 describe('select a character', () => {
+  let position = [0, 0]
   it('by including a down move one after the other.', () => {
     expect(
       streetFighterSelection(fighters, position, [
@@ -55,6 +57,6 @@ describe('select a character', () => {
         'down',
         'left'
       ])
-    ).to.equal(['Vega', 'Balrog', 'Sagat', 'Sagat', 'Dhalsim'])
+    ).to.eql(['Vega', 'Balrog', 'Sagat', 'Sagat', 'Dhalsim'])
   })
 })
