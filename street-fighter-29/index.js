@@ -1,6 +1,6 @@
 // create logic for each move that will move the position of
 // the cursor of the fighters array
-
+/*
 function streetFighterSelection(fighters, position, moves) {
   var fighterHovered = []
   for (i = 0; i < moves.length; i++) {
@@ -31,32 +31,36 @@ function streetFighterSelection(fighters, position, moves) {
   console.log(fighterHovered)
   return fighterHovered
 }
+*/
 
-/*
 function up(fighters, position, fightersHovered) {
-  fightersHovered.push(fighters[0][position[1]])
-  return fightersHovered
+  position[0] = 0
+  return fightersHovered.push(fighters[0][position[1]])
 }
 
 function down(fighters, position, fightersHovered) {
-  fightersHovered.push(fighters[1][position[1]])
-  return fightersHovered
+  position[0] = 1
+  return fightersHovered.push(fighters[1][position[1]])
 }
 
 function left(fighters, position, fightersHovered) {
   if (position[1] === 0) {
-    fightersHovered.push(fighters[position[0]][position[5]])
+    position[1] = fighters[0].length - 1
+    fightersHovered.push(fighters[position[0]][fighters[0].length - 1])
   } else {
-    fightersHovered.push(fighters[position[0][position[1] - 1]])
+    fightersHovered.push(fighters[position[0]][position[1] - 1])
+    position[1] = position[1] - 1
   }
   return fightersHovered
 }
 
 function right(fighters, position, fightersHovered) {
-  if (position[1] === fighters.length) {
+  if (position[1] === fighters[0].length - 1) {
     fightersHovered.push(fighters[position[0]][0])
+    position[1] = 0
   } else {
-    fightersHovered.push(fighters[position[0][position[1] + 1]])
+    fightersHovered.push(fighters[position[0]][position[1] + 1])
+    position[1] += 1
   }
   return fightersHovered
 }
@@ -82,9 +86,7 @@ function streetFighterSelection(fighters, position, moves) {
         break
     }
   })
-  console.log(fightersHovered)
   return fightersHovered
 }
-*/
 
 module.exports = streetFighterSelection
