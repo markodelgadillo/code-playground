@@ -18,6 +18,11 @@ function incrementString(strng) {
   console.log(alphaSplit)
   console.log(numSplit)
   console.log(number)
+  for (let j = numSplit.length - number.toString().length; j > 0; j--) {
+    alphaSplit.push('0')
+  }
+  alphaSplit.push(number.toString())
+  return alphaSplit.join('')
 }
 
 module.exports = incrementString
