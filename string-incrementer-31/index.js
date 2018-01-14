@@ -15,9 +15,6 @@ function incrementString(strng) {
   } else {
     number = parseInt(numSplit.join(''), 10) + 1
   }
-  console.log(alphaSplit)
-  console.log(numSplit)
-  console.log(number)
   for (let j = numSplit.length - number.toString().length; j > 0; j--) {
     alphaSplit.push('0')
   }
