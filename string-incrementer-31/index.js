@@ -9,8 +9,15 @@ function incrementString(strng) {
       numSplit.push(splitStr[i])
     }
   }
+  let number = ''
+  if (numSplit.toString() === '') {
+    number = 1
+  } else {
+    number = parseInt(numSplit.join(''), 10) + 1
+  }
   console.log(alphaSplit)
   console.log(numSplit)
+  console.log(number)
 }
 
 module.exports = incrementString
