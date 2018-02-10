@@ -1,5 +1,5 @@
 function score(dice) {
-  let score = ''
+  let score = 0 // broke "less than three one's" test when it was an empty string
   const ones = []
   const sixes = []
   const fives = []
@@ -38,6 +38,7 @@ function score(dice) {
     score = 1000
     score += 100 * (ones.length - 3)
   } else if (ones.length < 3) {
+    console.log(score)
     score += 100 * ones.length
   }
 
