@@ -12,4 +12,9 @@
 // n is invalid
 // where you replace n for the actual value passed
 
-function prefill(n, v) {}
+function prefill(n, v) {
+  const arr = []
+  arr.length = n
+  arr.fill(v, 0, n)
+  return arr
+}
