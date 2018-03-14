@@ -23,3 +23,5 @@ function prefill(n, v) {
   arr.fill(v, 0, n)
   return arr
 }
+
+module.exports = prefill
