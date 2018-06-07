@@ -12,15 +12,17 @@ const alpha = 'abcdefghijklmnopqrstuvwxyz'.split('')
 const secret = "Va gur ryringbef, gur rkgebireg ybbxf ng gur BGURE thl'f fubrf".split(
   ''
 )
-let b
+const re = new RegExp(/^(?![A-Za-z0-9])+/g)
+let b // index number in alpha that matches the letter in secret
 
+// use regex instead to compare 'letter' to
 function rot13(secret) {
-  const answer = []
-  secret.map(letter => {
-    if (letter != ' ') {
-      b = alpha.findIndex(x => x === letter.toLowerCase())
-    }
-    if (b <= 12) {
+  const answer = [] // pushing the rotated characters
+  secret.forEach(letter => {
+    b = alpha.findIndex(x => x === letter.toLowerCase())
+    if (letter.match(re)) {
+      answer.push(letter)
+    } else if (b <= 12) {
       answer.push(alpha[b + 13])
     } else if (b >= 13) {
       answer.push(alpha[b - 13])
