@@ -8,24 +8,32 @@ If letter not matching, push a space
 Join the answer array and return it
 */
 
-const alpha = 'abcdefghijklmnopqrstuvwxyz'.split('')
+const alpha = 'abcdefghijklmnopqrstuvwxyz'.split('') // creates an array of the alphabet
+
 const secret = "Va gur ryringbef, gur rkgebireg ybbxf ng gur BGURE thl'f fubrf".split(
   ''
-)
-const re = new RegExp(/^(?![A-Za-z0-9])+/g)
+) // creates an array of the secret message
+
+const re = new RegExp(/^(?![A-Za-z0-9])+/g) //store regex looking for charachters that are not letters or numbers
+
 let b // index number in alpha that matches the letter in secret
 
-// use regex instead to compare 'letter' to
+let upperCase = new RegExp(/^([A-Z])+$/)
+let Y
+
 function rot13(secret) {
   const answer = [] // pushing the rotated characters
   secret.forEach(letter => {
-    b = alpha.findIndex(x => x === letter.toLowerCase())
+    b = alpha.findIndex(x => x === letter.toLowerCase()) // finding the index to 'alpha' that matches the letter from 'secret'
+    // console.log(upperCase.test(letter))
+    upperCase.test(letter) ? (Y = true) : (Y = false)
+    console.log(Y, b, letter)
     if (letter.match(re)) {
       answer.push(letter)
     } else if (b <= 12) {
-      answer.push(alpha[b + 13])
+      answer.push(...(Y ? alpha[b + 13].toUpperCase() : alpha[b + 13]))
     } else if (b >= 13) {
-      answer.push(alpha[b - 13])
+      answer.push(...(Y ? alpha[b - 13].toUpperCase() : alpha[b - 13]))
     }
   })
   return answer.join('')
