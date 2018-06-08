@@ -8,27 +8,43 @@ If letter not matching, push a space
 Join the answer array and return it
 */
 
-const alpha = 'abcdefghijklmnopqrstuvwxyz'.split('') // creates an array of the alphabet
+// creates an array of the alphabet
+const alpha = 'abcdefghijklmnopqrstuvwxyz'.split('')
 
-const secret = "Va gur ryringbef, gur rkgebireg ybbxf ng gur BGURE thl'f fubrf".split(
-  ''
-) // creates an array of the secret message
+// the secret message to decipher
+const secret = "Va gur ryringbef, gur rkgebireg ybbxf ng gur BGURE thl'f fubrf"
 
-const re = new RegExp(/^(?![A-Za-z0-9])+/g) //store regex looking for charachters that are not letters or numbers
+// store regex looking for charachters that are not letters or numbers
+// only storing punctuation and spaces
+const re = new RegExp(/^(?![A-Za-z0-9])+/g)
 
-let b // index number in alpha that matches the letter in secret
+// store regex that looks for upper case characters including
+// consecutive characters
+const upperCase = new RegExp(/^([A-Z])+$/)
 
-let upperCase = new RegExp(/^([A-Z])+$/)
+// index number in alpha that matches the letter in secret
+let b
+
+// flag for upper case letters
 let Y
 
+// flag for numbers
+let N
+
 function rot13(secret) {
-  const answer = [] // pushing the rotated characters
-  secret.forEach(letter => {
-    b = alpha.findIndex(x => x === letter.toLowerCase()) // finding the index to 'alpha' that matches the letter from 'secret'
-    // console.log(upperCase.test(letter))
+  const answer = []
+  const x = [...secret]
+  x.forEach(letter => {
+    // checking if the letter is a number
+    isNaN(letter) ? (N = false) : (N = true)
+
+    // finding the index to 'alpha' that matches the letter from 'secret'
+    b = alpha.findIndex(x => x === letter.toLowerCase())
+
+    // Checking for upper case
     upperCase.test(letter) ? (Y = true) : (Y = false)
-    console.log(Y, b, letter)
-    if (letter.match(re)) {
+
+    if (letter.match(re) || N) {
       answer.push(letter)
     } else if (b <= 12) {
       answer.push(...(Y ? alpha[b + 13].toUpperCase() : alpha[b + 13]))
