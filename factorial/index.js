@@ -12,25 +12,24 @@
 
 // not completed
 function going(n) {
-  let x = n
+  const x = n
   let y = 1
   let z
+  let a = 0
   while (n > 0) {
-    z = factorial(y)
-    console.log(n)
-    if (n === 0) {
+    z = parseInt(factorial(y))
+    a += z
+    if (n === 1) {
       break
+    } else {
+      y++
+      n--
     }
-    console.log(z)
-    z += z
-    console.log(y)
-    y++
-    console.log(n)
-    n--
   }
-  console.log(z)
-  return 1 / factorial(x) * this.z
+  return 1 / factorial(x) * a
 }
+
+// (n === 1 ? break : (y++, n--))
 
 // completed factorial function
 function factorial(n) {
@@ -42,8 +41,8 @@ function factorial(n) {
       break
     } else {
       x *= fN - y
-      n--
       y++
+      n--
     }
   }
   return x
