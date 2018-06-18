@@ -10,8 +10,7 @@
   going(n) => (1/n!) * (1! + 2! + 3!... + n!)
 */
 
-// not completed
-function going(n) {
+function going1(n) {
   const x = n
   let y = 1
   let z
@@ -61,4 +60,23 @@ function factorial(n) {
   } else {
     return x
   }
+}
+
+// best answer from Code Wars
+// Come back to this code when handling numbers with e+/e-
+
+function going(n) {
+  var result = 1
+  var acc = 1
+
+  while (n > 1) {
+    console.log(acc)
+    console.log(result)
+    console.log(n)
+    acc *= 1 / n
+    result += acc
+    n--
+  }
+  console.log(Math.floor(result * 1e6))
+  return Math.floor(result * 1e6) / 1e6
 }
