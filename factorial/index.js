@@ -17,7 +17,7 @@ function going(n) {
   let z
   let a = 0
   while (n > 0) {
-    z = parseInt(factorial(y))
+    z = factorial(y)
     a += z
     if (n === 1) {
       break
@@ -26,17 +26,23 @@ function going(n) {
       n--
     }
   }
-  return 1 / factorial(x) * a
+  return Number(((1 / factorial(x)) * a).toString().slice(0, 8))
 }
 
+// Number((1 / factorial(x) * a).toString().slice(0, 8))
+
+// ((1 / factorial(x)) * a).toString().slice(0, 8)
 // (n === 1 ? break : (y++, n--))
 
 // completed factorial function
 function factorial(n) {
+  let regX = new RegExp(/[^\.\d\s]/, 'gi')
   const fN = n
   let x = n
   let y = 1
   while (n > 0) {
+    console.log(fN - y)
+    console.log(x)
     if (y === fN) {
       break
     } else {
@@ -45,5 +51,14 @@ function factorial(n) {
       n--
     }
   }
-  return x
+  if (x.toString().includes('e+')) {
+    return Number(
+      x
+        .toString()
+        .replace(regX, '')
+        .slice(0, 8)
+    )
+  } else {
+    return x
+  }
 }
